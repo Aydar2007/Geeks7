@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     
     #apps
     "blogs",
-    "users"
+    "users",
 
     #libs
 ]
@@ -75,7 +75,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'blog.wsgi.application'
+WSGI_APPLICATION = 'core.wsgi.application'
 
 
 # Database
