@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}
+    Обновить пост - {{ post.title }}
+{% endblock %}
+
+{% block content %}
+<h1>Обновить пост - {{ post.title }}</h1>
+
+    <form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Обновить запись</button>
+    </form>
+
+    <hr>
+    <a href="{% url 'contacts-page' %}">Контакты</a><br>
+    <a href="{% url 'index-page' %}">Главная</a><br>
+{% endblock %}
