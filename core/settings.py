@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "blog",
     "users",
     "examples",
+    "templates",
 
     # libs
 ]
@@ -87,7 +88,7 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": os.environ.get("DB_NAME"),
-        "USER": os.environ.get("DB_USER"),
+        "USER": os.environ.get("DB_USERS"),
         "PASSWORD": os.environ.get("DB_PASSWORD"),
         "HOST": os.environ.get("DB_HOST"),
         "PORT": os.environ.get("DB_PORT"),

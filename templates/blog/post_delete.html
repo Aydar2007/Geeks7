@@ -9,3 +9,8 @@
     <a href="{% url 'contacts-page' %}">Контакты</a><br>
     <a href="{% url 'index-page' %}">Главная</a><br>
 {% endblock %}
+{% if posts %}
+    {% for postt in posts %}
+        <div class="alert alert-success">{{ Успешно удален }}</div>
+    {% endfor %}
+{% endif %}

@@ -12,7 +12,7 @@ from django.views import generic
 # __________________Retrieve____________________
 
 class IndexListView(generic.ListView):
-    # model = Post
+    model = Post
     queryset = Post.objects.filter(status=True)
     context_object_name = "posts"
     template_name = "blog/index.html"
