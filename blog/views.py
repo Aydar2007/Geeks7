@@ -1,8 +1,9 @@
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 
-from blog.models import Post
+from blog.forms import CommentForm
+from blog.models import Post, Comment
 from django.views import generic
 
 
@@ -12,7 +13,7 @@ from django.views import generic
 # __________________Retrieve____________________
 
 class IndexListView(generic.ListView):
-    model = Post
+    # model = Post
     queryset = Post.objects.filter(status=True)
     context_object_name = "posts"
     template_name = "blog/index.html"
@@ -22,6 +23,21 @@ class PostDetailView(generic.DetailView):
     model = Post
     context_object_name = "post"
     template_name = "blog/post_detail.html"
+    extra_context = {"form": CommentForm()}
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context["form"] = CommentForm()
+    #     return context
+
+    def post(self, request, pk):
+        post = Post.objects.get(pk=pk)
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            pre_saved_comment = form.save(commit=False)
+            pre_saved_comment.post = post
+            pre_saved_comment.save()
+        return redirect("post-detail", pk)
 
 
 def index(request):

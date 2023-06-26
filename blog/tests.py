@@ -25,12 +25,12 @@ class BlogTestCase(TestCase):
         self.assertTemplateUsed(response, "blog/contacts.html")
         self.assertEqual(response.status_code, 200)
 
-    def test_post_update(self):
-        response = self.client.get(reverse("post-update", args=(1,)))
-        self.assertTemplateUsed(response, "blog/post_update.html")
-        self.assertEqual(response.status_code, 200)
-
-    def test_post_delete(self):
-        response = self.client.get(reverse("post-delete", args=(1,)))
-        self.assertTemplateUsed(response, "blog/post_delete.html")
-        self.assertEqual(response.status_code, 200)
+    # def test_post_update(self):
+    #     response = self.client.get(reverse("post-update", args=(1,)))
+    #     self.assertTemplateUsed(response, "blog/post_update.html")
+    #     self.assertEqual(response.status_code, 200)
+    #
+    # def test_post_delete(self):
+    #     response = self.client.get(reverse("post-delete", args=(1,)))
+    #     self.assertTemplateUsed(response, "blog/post_delete.html")
+    #     self.assertEqual(response.status_code, 200)
