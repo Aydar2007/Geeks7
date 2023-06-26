@@ -22,13 +22,13 @@
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" class="btn btn-success">Прокомментировать</button>
+    <input type="text" name="name" value="{{ request.user.username }}><br>#}
     </form>
 
 {#    <form action="" method="post">#}
 {#    {% csrf_token %}#}
 {#        #}
 {#        <label for="username">Введите имя</label>#}
-{#        <input type="text" name="name" id="username"><br>#}
 {#        <label for="text">Введите комментарий</label>#}
 {#        <input type="text" name="comment" id="text" style="height: 100px;"><br>#}
 {#        <button type="submit" class="btn btn-success">Прокомментировать</button>#}

@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 
+from blog.forms import PostForm
 from blog.forms import CommentForm
 from blog.models import Post, Comment
 from django.views import generic
@@ -59,12 +60,15 @@ def get_post_detail(request, pk):
 
 # _________________Create_________________________
 
-class PostCreateView(generic.CreateView):
-    model = Post
-    template_name = "blog/post_create.html"
-    fields = ["title", "content", "cover", "status"]
-    success_url = reverse_lazy("index-page")
 
+class PostCreateView(generic.CreateView):
+    form_class = PostForm
+    template_name = 'post_create.html'
+    success_url = '/posts/'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 # def create_post(request):
 #     if request.method == "POST":
